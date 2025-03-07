@@ -1,1 +1,30 @@
-[]
+[
+  {
+    "name": "color",
+    "settings": [
+      {
+        "type": "color",
+        "id": "bg",
+        "label": "Background Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text Color",
+        "default": "#000000"
+      }
+    ]
+  },
+  {
+    "name": "Search Visiblity",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "toggle_search",
+        "label": "Show Seach",
+        "default": true
+      }
+    ]
+  }
+]
