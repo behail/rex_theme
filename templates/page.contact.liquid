@@ -1,0 +1,16 @@
+{% form 'contact' %}
+    {{ form.errors | default_errors }}
+
+    <div class="email">
+      <label for="email">Email</label>
+      <input type="email" name="contact[email]"  />
+    </div>
+    <div class="email">
+      <label for="test">Test</label>
+      <input type="text" name="contact[test]"  />
+    </div>
+  
+    <div class="submit">
+      <input type="submit" value="Create" />
+    </div>
+  {% endform %}
