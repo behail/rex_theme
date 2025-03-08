@@ -69,7 +69,11 @@ svg{
 .product-left {
    flex: 1;
    max-width: 480px;
-   
+ 
+}
+.product-left img{
+   height: 300px;
+   width: 100%;
 }
 
 .product-right{
@@ -125,6 +129,29 @@ svg{
    font-size: 14px;
    text-decoration: line-through;
    color: #999;
+}
+
+.product-image-thumbs{
+   display: flex;
+   gap: 10px;
+   list-style: none;
+}
+.product-image-thumbs li{
+   cursor: pointer;
+}
+
+.product-image-thumbs li img{
+   width: 150px;
+   height: 100px;
+}
+
+img {
+   border-radius: 5px;
+}
+
+.selected{
+   border: 1px solid red;
+   border-radius: 5px;
 }
 /* Header */
 
