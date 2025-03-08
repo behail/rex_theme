@@ -60,11 +60,29 @@
                 {% endif %}
 
                 <div class="product-option">
-                   <label for="quantity">Quantity</label>     
-                   <input type="text" id="quantity" name="quantity" value="1" class="product-quantity" />
+                   <label for="quantity">Quantity</label>  
+                   <div class="quantity-selector">
+                        <button type="button" class="quantity-minus">-</button>
+                       <input type="text" id="quantity" name="quantity" value="1" class="product-quantity" />
+                       <button type="button" class="quantity-plus">+</button>
+                   </div>   
                 </div>
 
-                <button type="submit" class="product-add">{{ 'General.add_to_cart' | t  }}</button>
+                <button 
+                    id="add-button"
+                    type="submit" 
+                    class="product-add"
+                    {% unless product.selected_or_first_available_variant.available %}
+                        disabled
+                    {% endunless %}
+                    >
+                    {% if product.selected_or_first_available_variant.available %}
+                        {{ 'General.add_to_cart' | t  }}
+                    {% else %}
+                        Out of Stock
+                    {% endif %}
+                    
+                    </button>
             {% endform %}
         </div>
     </div>
@@ -125,6 +143,16 @@
                    document.querySelectorAll('.product-image-thumbs li')[matchedVariant.featured_image.position -1].classList.add('selected');
       
                }
+
+               //Change button
+              var add = document.querySelector("#add-button")
+              if(matchedVariant.available){
+                add.disabled = false;
+                add.textContent = "Add to Cart";
+              } else {
+                  add.disabled = true;
+                  add.textContent = "Out of Stock";
+              }
             })
     })
 
@@ -136,6 +164,18 @@
                 document.querySelector('#product-img').setAttribute('src', li.querySelector('img').getAttribute('src'));
             })
     })
+
+    document.querySelector('.quantity-minus').addEventListener('click', ()=>{
+        var curVal = Number(document.querySelector('#quantity').value);
+        if( curVal > 1){
+            document.querySelector('#quantity').value = curVal - 1;
+        }
+    })  
+
+    document.querySelector('.quantity-plus').addEventListener('click', ()=>{
+        var curVal = Number(document.querySelector('#quantity').value);
+        document.querySelector('#quantity').value = curVal + 1;
+    })  
 
 </script>
 
